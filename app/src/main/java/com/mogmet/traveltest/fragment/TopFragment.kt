@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.mogmet.traveltest.databinding.FragmentTopBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class TopFragment : Fragment() {
 
@@ -14,7 +14,7 @@ class TopFragment : Fragment() {
         fun newInstance() = TopFragment()
     }
 
-    private lateinit var viewModel: TopViewModel
+    private val viewModel: TopViewModel by viewModel()
     private lateinit var binding: FragmentTopBinding
 
     override fun onCreateView(
@@ -27,7 +27,6 @@ class TopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TopViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         // TODO: Use the ViewModel
