@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TravelTest</string>
+    <string name="default_label">Default!!</string>
+    <string name="set">set!!</string>
 </resources>
