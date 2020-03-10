@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.mogmet.traveltest.R
 import com.mogmet.traveltest.databinding.FragmentTopBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -36,6 +38,9 @@ class TopFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.button.setOnClickListener {
             viewModel.updateView(binding.textInputLayout.editText?.text.toString())
+        }
+        binding.goToAmericaButton.setOnClickListener {
+            findNavController().navigate(R.id.action_topFragment_to_americaFragment)
         }
     }
 }
