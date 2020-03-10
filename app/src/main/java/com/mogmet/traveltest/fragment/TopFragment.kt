@@ -42,6 +42,9 @@ class TopFragment : Fragment() {
         binding.goToAmericaButton.setOnClickListener {
             findNavController().navigate(R.id.action_topFragment_to_americaFragment)
         }
+        binding.countryButton.setOnClickListener {
+            findNavController().navigate(R.id.action_topFragment_to_nested_nav_graph_detail)
+        }
     }
 }
 
