@@ -10,4 +10,8 @@ class AmericaViewModel : ViewModel() {
     }
     val labelText: LiveData<String>
         get() = _labelText
+
+    fun setupLabel(text: String) {
+        _labelText.value = text
+    }
 }

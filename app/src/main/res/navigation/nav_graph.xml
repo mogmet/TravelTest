@@ -9,7 +9,11 @@
         android:label="TopFragment" >
         <action
             android:id="@+id/action_topFragment_to_americaFragment"
-            app:destination="@id/americaFragment" />
+            app:destination="@id/americaFragment" >
+            <argument
+                android:name="content"
+                android:defaultValue="USA" />
+        </action>
         <action
             android:id="@+id/action_topFragment_to_nested_nav_graph_detail"
             app:destination="@id/nested_nav_graph_detail" />
@@ -17,6 +21,10 @@
     <fragment
         android:id="@+id/americaFragment"
         android:name="com.mogmet.traveltest.fragment.AmericaFragment"
-        android:label="AmericaFragment" />
+        android:label="AmericaFragment" >
+        <argument
+            android:name="content"
+            app:argType="string" />
+    </fragment>
     <include app:graph="@navigation/nested_nav_graph_detail" />
 </navigation>

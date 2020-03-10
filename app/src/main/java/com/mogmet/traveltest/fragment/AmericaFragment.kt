@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.mogmet.traveltest.databinding.FragmentAmericaBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class AmericaFragment : Fragment() {
 
@@ -14,7 +15,8 @@ class AmericaFragment : Fragment() {
         fun newInstance() = AmericaFragment()
     }
 
-    private lateinit var viewModel: AmericaViewModel
+    private val viewModel: AmericaViewModel by viewModel()
+    private val args: AmericaFragmentArgs by navArgs()
     private lateinit var binding: FragmentAmericaBinding
 
     override fun onCreateView(
@@ -22,13 +24,13 @@ class AmericaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAmericaBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AmericaViewModel::class.java)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setupLabel(args.content)
     }
 }

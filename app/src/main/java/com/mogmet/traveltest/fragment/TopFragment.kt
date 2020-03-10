@@ -36,11 +36,13 @@ class TopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.button.setOnClickListener {
             viewModel.updateView(binding.textInputLayout.editText?.text.toString())
         }
         binding.goToAmericaButton.setOnClickListener {
-            findNavController().navigate(R.id.action_topFragment_to_americaFragment)
+            val action = TopFragmentDirections.actionTopFragmentToAmericaFragment(viewModel.submitText.value ?: "")
+            findNavController().navigate(action)
         }
         binding.countryButton.setOnClickListener {
             findNavController().navigate(R.id.action_topFragment_to_nested_nav_graph_detail)
