@@ -41,11 +41,16 @@ class TopFragment : Fragment() {
             viewModel.updateView(binding.textInputLayout.editText?.text.toString())
         }
         binding.goToAmericaButton.setOnClickListener {
-            val action = TopFragmentDirections.actionTopFragmentToAmericaFragment(viewModel.submitText.value ?: "")
+            val action = TopFragmentDirections.actionTopFragmentToAmericaFragment(
+                viewModel.submitText.value ?: ""
+            )
             findNavController().navigate(action)
         }
         binding.countryButton.setOnClickListener {
             findNavController().navigate(R.id.action_topFragment_to_nested_nav_graph_detail)
+        }
+        binding.countryListButton.setOnClickListener {
+            findNavController().navigate(R.id.action_topFragment_to_countryListFragment)
         }
     }
 }

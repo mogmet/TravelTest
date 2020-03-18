@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/topFragment">
 
     <fragment
@@ -17,6 +19,9 @@
         <action
             android:id="@+id/action_topFragment_to_nested_nav_graph_detail"
             app:destination="@id/nested_nav_graph_detail" />
+        <action
+            android:id="@+id/action_topFragment_to_countryListFragment"
+            app:destination="@id/countryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/americaFragment"
@@ -27,4 +32,18 @@
             app:argType="string" />
     </fragment>
     <include app:graph="@navigation/nested_nav_graph_detail" />
+    <fragment
+        android:id="@+id/countryListFragment"
+        android:name="com.mogmet.traveltest.fragment.countrylist.CountryListFragment"
+        android:label="CountryListFragment" >
+        <action
+            android:id="@+id/action_countryListFragment_to_americaFragment"
+            app:destination="@id/americaFragment"
+            app:popUpTo="@id/topFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="content"
+                android:defaultValue="USA" />
+        </action>
+    </fragment>
 </navigation>
